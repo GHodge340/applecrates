@@ -79,11 +79,25 @@
             text-align: center;
             min-height: 90vh;
             background: linear-gradient(180deg, rgba(61, 43, 31, 0.2) 0%, rgba(18, 18, 18, 1) 100%);
-            padding: 40px 20px;
+            padding: 60px 20px;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-logo {
+            height: 120px;
+            margin-bottom: 30px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin-bottom: 20px;
             background: linear-gradient(90deg, var(--wood-light), var(--white));
             -webkit-background-clip: text;
@@ -92,11 +106,18 @@
             line-height: 1.1;
         }
 
-        .hero p {
+        .hero-description {
             font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: 650px;
             margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-cta-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
 
         .cta-button {
@@ -275,11 +296,13 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <div class="container">
-            <img src="assets/logo.png" alt="Applecrates Logo" style="height: 100px; margin-bottom: 20px; object-fit: contain;">
+        <div class="container hero-container">
+            <img src="assets/logo.png" alt="Applecrates Logo" class="hero-logo">
             <h1>Applecrates</h1>
-            <p>The fast, visual way to rediscover your dj library. Built for DJs who want to spend more time creating sets and less time building your collection. Download now and get started!</p>
-            <a href="#download" class="cta-button">Get Started for Free</a>
+            <p class="hero-description">The fast, visual way to rediscover your dj library. Built for DJs who want to spend more time creating sets and less time building your collection. Download now and get started!</p>
+            <div class="hero-cta-wrapper">
+                <a href="#download" class="cta-button">Get Started for Free</a>
+            </div>
         </div>
     </header>
 
@@ -323,7 +346,7 @@
         <div class="container">
             <h2>See it in Action</h2>
             <div class="demo-video-wrapper">
-                <iframe src="https://www.youtube-nocookie.com/embed/eN_y4d3pfnY?rel=0" title="Applecrates Demo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                <iframe src="https://www.youtube-nocookie.com/embed/YFML_fU9pEE?rel=0" title="Applecrates Demo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
             <p class="demo-caption">Visual waveforms and crate organization in action.</p>
         </div>
