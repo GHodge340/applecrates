@@ -79,11 +79,12 @@
             text-align: center;
             min-height: 90vh;
             background: linear-gradient(180deg, rgba(61, 43, 31, 0.2) 0%, rgba(18, 18, 18, 1) 100%);
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
 
         .hero-container {
             max-width: 800px;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -94,6 +95,7 @@
             margin-bottom: 30px;
             object-fit: contain;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+            transition: height 0.3s ease;
         }
 
         .hero h1 {
@@ -104,14 +106,17 @@
             -webkit-text-fill-color: transparent;
             letter-spacing: -1px;
             line-height: 1.1;
+            transition: font-size 0.3s ease;
         }
 
         .hero-description {
             font-size: 1.25rem;
             color: var(--text-muted);
             max-width: 650px;
+            width: 100%;
             margin-bottom: 40px;
             line-height: 1.6;
+            transition: font-size 0.3s ease;
         }
 
         .hero-cta-wrapper {
@@ -283,8 +288,11 @@
         }
 
         @media (max-width: 768px) {
+            .hero { padding: 60px 20px; min-height: auto; }
+            .hero-logo { height: 80px; margin-bottom: 20px; }
             .hero h1 { font-size: 2.8rem; }
-            .hero p { font-size: 1.1rem; }
+            .hero-description { font-size: 1.1rem; margin-bottom: 30px; }
+            
             .about h2, .demo h2, .download h2 { font-size: 2rem; }
             section { padding: 60px 20px; }
             .motivation { padding: 30px; }
