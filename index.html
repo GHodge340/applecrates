@@ -60,7 +60,7 @@
         }
 
         section {
-            padding: 100px 20px;
+            padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -79,6 +79,7 @@
             text-align: center;
             min-height: 90vh;
             background: linear-gradient(180deg, rgba(61, 43, 31, 0.2) 0%, rgba(18, 18, 18, 1) 100%);
+            padding: 40px 20px;
         }
 
         .hero h1 {
@@ -88,6 +89,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -1px;
+            line-height: 1.1;
         }
 
         .hero p {
@@ -166,8 +168,8 @@
         /* Features Section */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .feature-card {
@@ -201,25 +203,26 @@
 
         .demo h2 {
             margin-bottom: 40px;
+            font-size: 2.5rem;
         }
 
-        .demo-placeholder {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background-color: var(--ui-panel-alt);
-            border: 2px dashed var(--wood-dark);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+        .demo-video-wrapper {
             position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid var(--wood-dark);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
         }
 
-        .demo-placeholder::after {
-            content: "Screenshot / Video Demo Placeholder";
-            font-weight: 600;
+        .demo-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .demo-caption {
@@ -232,9 +235,9 @@
             background: linear-gradient(135deg, var(--wood-dark) 0%, var(--ui-bg) 100%);
             border-radius: 24px;
             text-align: center;
-            padding: 80px 40px;
+            padding: 60px 40px;
             margin-top: 50px;
-            margin-bottom: 100px;
+            margin-bottom: 60px;
         }
 
         .download h2 {
@@ -250,22 +253,6 @@
             margin-top: 40px;
         }
 
-        .btn-secondary {
-            background-color: transparent;
-            border: 2px solid var(--wood-light);
-            color: var(--wood-light);
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--wood-light);
-            color: var(--ui-bg);
-        }
-
         footer {
             padding: 40px 20px;
             text-align: center;
@@ -275,10 +262,12 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.8rem; }
             .hero p { font-size: 1.1rem; }
+            .about h2, .demo h2, .download h2 { font-size: 2rem; }
             section { padding: 60px 20px; }
             .motivation { padding: 30px; }
+            .download { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -287,9 +276,9 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="container">
-            <img src="assets/logo.png" alt="Applecrates Logo" style="height: 120px; margin-bottom: 20px;">
+            <img src="assets/logo.png" alt="Applecrates Logo" style="height: 100px; margin-bottom: 20px; object-fit: contain;">
             <h1>Applecrates</h1>
-            <p>The fast, visual way to rediscover your dj library. Built for DJs who want to spend more time creating sets and less time building your collection.  Download now and get started!</p>
+            <p>The fast, visual way to rediscover your dj library. Built for DJs who want to spend more time creating sets and less time building your collection. Download now and get started!</p>
             <a href="#download" class="cta-button">Get Started for Free</a>
         </div>
     </header>
@@ -299,9 +288,7 @@
         <div class="container">
             <h2>Organize. Browse. Inspire.</h2>
             <p>
-                Applecrates is a dedicated crate creation tool designed to make DJ sets great again. However, it's not just for DJs.
-                Whether you're a producer, dj or musician, Applecrates helps you 
-                reclaim your creative flow by assiting in library creation helping you to structure music directories easily.
+                Applecrates is a dedicated crate creation tool designed to make DJ sets great again. Whether you're a producer, dj or musician, Applecrates helps you reclaim your creative flow by assisting in library creation and directory organization.
             </p>
         </div>
     </section>
@@ -309,9 +296,9 @@
     <!-- Why I Built It -->
     <section class="container">
         <div class="motivation">
-            <h2>Why I Built Applecrates</h2>
-            <p>"I was tired of the friction. My hard drives were full of gold, but the collection and organization process was time consuming and brutal.  I also wanted a way to mirror my applemusic playlists on my hard drive locally and easily.   I couldn't find anything that does this quickly and efficiently. I wanted a tool that was simple to use and didn't feel like complicated to use."</p>
-            <p>— DevByGreg, The Founder</p>
+            <h2>Why I Built It</h2>
+            <p>"I was tired of the friction. My hard drives were full of gold, but the collection process was time consuming. I wanted a tool that could mirror my Apple Music playlists locally, quickly and easily. I built Applecrates to be the simple, efficient solution I couldn't find anywhere else."</p>
+            <p>— Gregory Hodge, Developer</p>
         </div>
     </section>
 
@@ -319,24 +306,24 @@
     <section class="features" id="features">
         <div class="feature-card">
             <h3>Light/Dark Mode</h3>
-            <p>There is a light/dark mode that allows you to switch between themes based on your preference or lighting conditions.</p>
+            <p>Switch between themes effortlessly to match your preference or ambient lighting conditions.</p>
         </div>
         <div class="feature-card">
-            <h3>Smart Playlist Duplication</h3>
-            <p>Applecrates quickly and intelligently scans the provided applemusic playlist and mirrors it to your local drive.</p>
+            <h3>Smart Duplication</h3>
+            <p>Intelligently scans your Apple Music playlists and mirrors the structure directly to your local drive.</p>
         </div>
         <div class="feature-card">
             <h3>Lightweight UI</h3>
-            <p>No bloat. No corporate jargon. Just a clean, modern interface that stays out of your way and lets your sounds take center stage.</p>
+            <p>A clean, modern interface designed to stay out of your way and let your music take center stage.</p>
         </div>
     </section>
 
     <!-- Demo Section -->
     <section class="demo">
         <div class="container">
-            <h2>Watch This Demo and See it in Action</h2>
-            <div class="demo-video-container">
-                <iframe width="100%" src="https://www.youtube.com/embed/YFML_fU9pEE" title="Applecrates Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="aspect-ratio: 16 / 9; border-radius: 16px; border: 1px solid var(--wood-dark); box-shadow: var(--shadow);"></iframe>
+            <h2>See it in Action</h2>
+            <div class="demo-video-wrapper">
+                <iframe src="https://www.youtube-nocookie.com/embed/eN_y4d3pfnY?rel=0" title="Applecrates Demo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
             <p class="demo-caption">Visual waveforms and crate organization in action.</p>
         </div>
@@ -346,7 +333,7 @@
     <section class="download" id="download">
         <div class="container">
             <h2>Ready to Dig In?</h2>
-            <p>Applecrates is currently available for <strong>Windows</strong> systems. Start rediscovering your music library today.</p>
+            <p>Applecrates is available for <strong>Windows</strong>. Start rediscovering your music library today.</p>
             <div class="download-buttons">
                 <a href="https://www.mediafire.com/file/x6se0drgehi27v1/AppleCrates+Setup+1.0.0.exe/file" class="cta-button" target="_blank">Download for Windows</a>
             </div>
