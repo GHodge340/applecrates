@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applecrates | Organize Your Sound</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Color Palette: Warm, Earthy, Wood-Inspired */
+            --wood-dark: #3d2b1f;
+            --wood-medium: #8b5a2b;
+            --wood-light: #c19a6b;
+            --wood-accent: #d2b48c;
+            --ui-bg: #121212;
+            --ui-panel: #1e1e1e;
+            --ui-panel-alt: #2a2a2a;
+            --text-main: #f5f5f7;
+            --text-muted: #a1a1a6;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--ui-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/bckg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 90vh;
+            background: linear-gradient(180deg, rgba(61, 43, 31, 0.2) 0%, rgba(18, 18, 18, 1) 100%);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--wood-light), var(--white));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--wood-medium);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 90, 43, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: var(--wood-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 90, 43, 0.5);
+        }
+
+        /* About Section */
+        .about {
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--wood-light);
+        }
+
+        .about p {
+            font-size: 1.15rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--text-main);
+        }
+
+        /* Why I Built It */
+        .motivation {
+            background-color: var(--ui-panel);
+            border-radius: 24px;
+            padding: 60px;
+            border: 1px solid var(--wood-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .motivation::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--wood-medium);
+        }
+
+        .motivation h2 {
+            margin-bottom: 20px;
+        }
+
+        .motivation p {
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--ui-panel-alt);
+            padding: 40px;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--wood-medium);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--wood-accent);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Demo Section */
+        .demo {
+            text-align: center;
+        }
+
+        .demo h2 {
+            margin-bottom: 40px;
+        }
+
+        .demo-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: var(--ui-panel-alt);
+            border: 2px dashed var(--wood-dark);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .demo-placeholder::after {
+            content: "Screenshot / Video Demo Placeholder";
+            font-weight: 600;
+        }
+
+        .demo-caption {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Download Section */
+        .download {
+            background: linear-gradient(135deg, var(--wood-dark) 0%, var(--ui-bg) 100%);
+            border-radius: 24px;
+            text-align: center;
+            padding: 80px 40px;
+            margin-top: 50px;
+            margin-bottom: 100px;
+        }
+
+        .download h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--wood-light);
+            color: var(--wood-light);
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--wood-light);
+            color: var(--ui-bg);
+        }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--ui-panel-alt);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            section { padding: 60px 20px; }
+            .motivation { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <img src="assets/logo.png" alt="Applecrates Logo" style="height: 120px; margin-bottom: 20px;">
+            <h1>Applecrates</h1>
+            <p>The fast, visual way to rediscover your dj library. Built for DJs who want to spend more time creating sets and less time building your collection.  Download now and get started!</p>
+            <a href="#download" class="cta-button">Get Started for Free</a>
+        </div>
+    </header>
+
+    <!-- What is Applecrates -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Organize. Browse. Inspire.</h2>
+            <p>
+                Applecrates is a dedicated crate creation tool designed to make DJ sets great again. However, it's not just for DJs.
+                Whether you're a producer, dj or musician, Applecrates helps you 
+                reclaim your creative flow by assiting in library creation helping you to structure music directories easily.
+            </p>
+        </div>
+    </section>
+
+    <!-- Why I Built It -->
+    <section class="container">
+        <div class="motivation">
+            <h2>Why I Built Applecrates</h2>
+            <p>"I was tired of the friction. My hard drives were full of gold, but the collection and organization process was time consuming and brutal.  I also wanted a way to mirror my applemusic playlists on my hard drive locally and easily.   I couldn't find anything that does this quickly and efficiently. I wanted a tool that was simple to use and didn't feel like complicated to use."</p>
+            <p>— DevByGreg, The Founder</p>
+        </div>
+    </section>
+
+    <!-- Feature Sections -->
+    <section class="features" id="features">
+        <div class="feature-card">
+            <h3>Light/Dark Mode</h3>
+            <p>There is a light/dark mode that allows you to switch between themes based on your preference or lighting conditions.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Smart Playlist Duplication</h3>
+            <p>Applecrates quickly and intelligently scans the provided applemusic playlist and mirrors it to your local drive.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Lightweight UI</h3>
+            <p>No bloat. No corporate jargon. Just a clean, modern interface that stays out of your way and lets your sounds take center stage.</p>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo">
+        <div class="container">
+            <h2>Watch This Demo and See it in Action</h2>
+            <div class="demo-video-container">
+                <iframe width="100%" src="https://www.youtube.com/embed/YFML_fU9pEE" title="Applecrates Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="aspect-ratio: 16 / 9; border-radius: 16px; border: 1px solid var(--wood-dark); box-shadow: var(--shadow);"></iframe>
+            </div>
+            <p class="demo-caption">Visual waveforms and crate organization in action.</p>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="container">
+            <h2>Ready to Dig In?</h2>
+            <p>Applecrates is currently available for <strong>Windows</strong> systems. Start rediscovering your music library today.</p>
+            <div class="download-buttons">
+                <a href="https://www.mediafire.com/file/x6se0drgehi27v1/AppleCrates+Setup+1.0.0.exe/file" class="cta-button" target="_blank">Download for Windows</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.85rem; color: var(--text-muted);">macOS version coming soon.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Applecrates. Built for DJs, by DJs.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
